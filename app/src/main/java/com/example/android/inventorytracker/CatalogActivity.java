@@ -1,15 +1,13 @@
 package com.example.android.inventorytracker;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
-import android.support.v4.widget.CursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,9 +17,6 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.example.android.inventorytracker.data.InventoryContract;
-import com.example.android.inventorytracker.data.InventoryDatabaseHelper;
-
-import java.util.List;
 
 public class CatalogActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
     private static final int INVENTORY_LOADER = 0;
@@ -37,24 +32,25 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_catalogex);
+        setContentView(R.layout.activity_catalog);
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                insertItem();
+                Intent intent = new Intent(CatalogActivity.this, EditorActivity.class);
+                startActivity(intent);
 
             }
         });
 
         final ListView itemListView = (ListView) findViewById(R.id.list);
         mInventoryAdapter = new InventoryCursorAdapter(this, null);
-
         itemListView.setAdapter(mInventoryAdapter);
-
         getSupportLoaderManager().initLoader(INVENTORY_LOADER,null,this);
+
+
 
     }
     @Override

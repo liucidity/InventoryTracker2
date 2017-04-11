@@ -31,7 +31,10 @@ public class InventoryDatabaseHelper extends SQLiteOpenHelper {
                         InventoryContract.InventoryEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         InventoryContract.InventoryEntry.COLUMN_ITEM_NAME + " TEXT NOT NULL, " +
                         InventoryContract.InventoryEntry.COLUMN_QUANTITY +" INTEGER DEFAULT 0, " +
-                        InventoryContract.InventoryEntry.COLUMN_PRICE +" INTEGER);"
+                        InventoryContract.InventoryEntry.COLUMN_PRICE +" INTEGER, " +
+                        InventoryContract.InventoryEntry.COLUMN_IMAGE + " BLOB, " +
+                        InventoryContract.InventoryEntry.COLUMN_SUPPLIER_EMAIL + " TEXT);"
+
 
         );
     }

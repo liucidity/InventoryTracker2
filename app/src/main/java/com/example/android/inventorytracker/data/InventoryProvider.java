@@ -64,8 +64,9 @@ public class InventoryProvider extends ContentProvider{
                 );
                 break;
             default:
-                throw new UnsupportedOperationException("Unknown uri: " + uri);
+                throw new UnsupportedOperationException("ph uri: " + uri);
         }
+        cursor.setNotificationUri(getContext().getContentResolver(),uri);
         return cursor;
     }
 
@@ -99,7 +100,7 @@ public class InventoryProvider extends ContentProvider{
                 }
                 break;
             default:
-                throw new UnsupportedOperationException("Unknown uri: " + uri);
+                throw new UnsupportedOperationException("ph uri: " + uri);
         }
         getContext().getContentResolver().notifyChange(uri,null);
 
@@ -145,7 +146,7 @@ public class InventoryProvider extends ContentProvider{
                 rows = db.update(InventoryContract.InventoryEntry.TABLE_NAME, values, selection, selectionArgs);
                 break;
             default:
-                throw new UnsupportedOperationException("Unknown uri: " + uri);
+                throw new UnsupportedOperationException("ph uri: " + uri);
         }
         if(rows != 0) {
             getContext().getContentResolver().notifyChange(uri, null);

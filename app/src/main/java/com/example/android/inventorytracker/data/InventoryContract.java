@@ -33,6 +33,8 @@ public class InventoryContract {
         public static final String COLUMN_ITEM_NAME = "itemName";
         public static final String COLUMN_QUANTITY = "itemQuantity";
         public static final String COLUMN_PRICE = "itemPrice";
+        public final static String COLUMN_IMAGE = "itemImage";
+        public final static String COLUMN_SUPPLIER_EMAIL ="supplierEmail";
 
         //builds URI to find specific inventory item by its identifier
         public static Uri buildItemUri(long id){

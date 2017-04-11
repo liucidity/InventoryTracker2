@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_item_name" />
             <EditText
-                android:id="@+id/quantity"
+                android:id="@+id/edit_quantity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
@@ -54,7 +54,7 @@
             android:paddingLeft="2dp">
 
             <EditText
-                android:id="@+id/price"
+                android:id="@+id/edit_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
@@ -63,4 +63,3 @@
     </LinearLayout>
 
 </LinearLayout>
-
