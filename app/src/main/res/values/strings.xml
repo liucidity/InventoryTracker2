@@ -1,13 +1,44 @@
 <resources>
     <string name="app_name">InventoryTracker</string>
-    <string name="category_overview">Overview</string>
+    <string name="category_item_name">Item</string>
+    <string name="category_item_quantity">Quantity</string>
     <string name="category_price">Price</string>
     <string name="hint_item_name">Item Name</string>
     <string name="hint_item_quantity">Quantity</string>
     <string name="hint_item_price">Price</string>
+    <string name="hint_supplier_email">ex: supplyorders@supplier.com</string>
     <string name="title_activity_cataloglist">cataloglist</string>
     <string name="title_activity_editor">EditorActivity</string>
     <string name="toast_sold_out">item is sold out!</string>
+    <string name="order_request">Order request for </string>
     <string name="toast_item_sold">one unit sold! </string>
+    <string name="toast_need_email">Input a valid email first!</string>
+    <string name="category_order">Order</string>
+    <!-- Dialog message when user is leaving editor but hasn't saved changes [CHAR LIMIT=NONE] -->
+    <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
+
+    <!-- Dialog button text for the option to discard a user's changes [CHAR LIMIT=20] -->
+    <string name="discard">Discard</string>
+
+    <!-- Dialog button text for the option to keep editing the current pet [CHAR LIMIT=20] -->
+    <string name="keep_editing">Keep Editing</string>
+    <string name="editor_delete_item_successful">Item deleted</string>
+
+    <!-- Toast message in editor when current pet has failed to be deleted [CHAR LIMIT=NONE] -->
+    <string name="editor_delete_item_failed">Error with deleting item</string>
+
+    <!-- Dialog message to ask the user to confirm deleting the current pet [CHAR LIMIT=NONE] -->
+    <string name="delete_dialog_msg">Delete this pet?</string>
+
+    <!-- Dialog button text for the option to confirm deleting the current pet [CHAR LIMIT=20] -->
+    <string name="delete">Delete</string>
+    <!-- Dialog button text for the option to cancel deletion of the current pet [CHAR LIMIT=20] -->
+    <string name="cancel">Cancel</string>
+    <string name="editor_insert_item_failed">Error with saving item</string>
+
+    <!-- Toast message in editor when current pet was successfully updated [CHAR LIMIT=NONE] -->
+    <string name="editor_save_item_successful">Item saved</string>
+    <string name="editor_update_item_successful">Item updated</string>
+    <string name="editor_update_item_failed">Failed to update</string>
 
 </resources>

@@ -11,6 +11,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import static android.R.attr.defaultHeight;
 import static android.R.attr.id;
 import static android.content.ContentValues.TAG;
 
@@ -19,6 +20,7 @@ import static android.content.ContentValues.TAG;
  */
 
 public class InventoryProvider extends ContentProvider{
+    public static final String LOG_TAG = InventoryProvider.class.getSimpleName();
     private static final int ITEM = 100;
     private static final int ITEM_ID = 101;
 
@@ -85,25 +87,40 @@ public class InventoryProvider extends ContentProvider{
     }
 
     @Override
-    public Uri insert( Uri uri, ContentValues values) {
-        SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-        long _id;
-        Uri returnUri;
-
-        switch (sUriMatcher.match(uri)){
+    public Uri insert( Uri uri, ContentValues contentValues) {
+        switch (sUriMatcher.match(uri)) {
             case ITEM:
-                _id = db.insert(InventoryContract.InventoryEntry.TABLE_NAME, null, values);
-                if(_id>0){
-                    returnUri = InventoryContract.InventoryEntry.buildItemUri(_id);
-                } else{
-                    throw new UnsupportedOperationException("Unable to insert rows into: " + uri);
-                }
-                break;
+                return insertItem(uri, contentValues);
             default:
-                throw new UnsupportedOperationException("ph uri: " + uri);
+                throw new IllegalArgumentException("Insertion is not supported for " + uri);
         }
-        getContext().getContentResolver().notifyChange(uri,null);
+    }
+    private Uri insertItem(Uri uri, ContentValues values){
+        String name = values.getAsString(InventoryContract.InventoryEntry.COLUMN_ITEM_NAME);
+        if(name == null){
+            throw new IllegalArgumentException("Item requires a name");
+        }
+        Integer price = values.getAsInteger(InventoryContract.InventoryEntry.COLUMN_PRICE);
+        if(price == null || price <=0){
+            throw new IllegalArgumentException("Item requires a price");
+        }
+        Integer quantity = values.getAsInteger(InventoryContract.InventoryEntry.COLUMN_QUANTITY);
+        if (quantity == null || quantity < 0) {
+            throw new IllegalArgumentException("Item Requires a quantity");
+        }
+        String supplierEmail = values.getAsString(InventoryContract.InventoryEntry.COLUMN_SUPPLIER_EMAIL);
+        if (supplierEmail == null){
+            throw new IllegalArgumentException("Item requires a supplier email");
+        }
+        SQLiteDatabase db = mOpenHelper.getWritableDatabase();
+        long id = db.insert(InventoryContract.InventoryEntry.TABLE_NAME, null, values);
+        if (id == -1) {
+            Log.e(LOG_TAG, "Failed to insert row for " + uri);
+            return null;
+        }
 
+
+        getContext().getContentResolver().notifyChange(uri, null);
         return ContentUris.withAppendedId(uri, id);
     }
 

@@ -4,13 +4,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/saveItem"
-        app:showAsAction="never"
-        android:title="Save"
+        app:showAsAction="always"
+        android:title="Save Item"
+        android:icon="@drawable/ic_save_white_24dp"
         >
     </item>
     <item
-        android:id="@+id/miProfile"
-        app:showAsAction="never"
-        android:title="Profile">
+        android:id="@+id/addImage"
+        app:showAsAction="always"
+        android:title="Add an Image"
+        android:icon="@drawable/ic_add_a_photo_white_24dp">
+    </item>
+    <item
+        android:id="@+id/deleteItem"
+        app:showAsAction="always"
+        android:title="Delete"
+        android:icon="@drawable/ic_delete_white_24dp">
     </item>
 </menu>
