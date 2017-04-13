@@ -11,6 +11,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import java.sql.Blob;
+
 import static android.R.attr.defaultHeight;
 import static android.R.attr.id;
 import static android.content.ContentValues.TAG;

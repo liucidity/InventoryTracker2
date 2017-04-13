@@ -248,8 +248,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                     saveItem();
                     return true;
                 case R.id.addImage:
-                    takePicture(mImageView);
-                    Log.d(LOG_TAG, "onOptionsItemSelected: button pressed was" +addImage);
+                    showAddImageDialog();
+                    return true;
                 case R.id.deleteItem:
                     showDeleteConfirmationDialog();
                     return true;
